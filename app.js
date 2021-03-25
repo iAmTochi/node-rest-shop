@@ -2,12 +2,20 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
-
+const mongoose = require('mongoose');
 
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
+//mongoDB connection
+mongoose.connect('mongodb+srv://code_tochi:'+
+    process.env.MONGO_ATLAS_PWD +'@node-rest-shop.ff5iz.mongodb.net/'+
+    process.env.DATABASE +'?retryWrites=true&w=majority',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology:true
+    })
 
 //Use morgan
 app.use(morgan('dev'))

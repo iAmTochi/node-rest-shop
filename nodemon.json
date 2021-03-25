@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_PWD": " tochi@2018",
+        "DATABASE": "node-rest-shop"
+    }
+}
