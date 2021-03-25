@@ -8,14 +8,26 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-//mongoDB connection
+//Online mongoDB connection
+/*
 mongoose.connect('mongodb+srv://code_tochi:'+
     process.env.MONGO_ATLAS_PWD +'@node-rest-shop.ff5iz.mongodb.net/'+
     process.env.DATABASE +'?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology:true
-    })
+    }
+); */
+
+// Localhost mongoDB connection
+mongoose.connect('mongodb://localhost:27017/node-rest-shop', {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(response => {
+        console.log("MongoDB Connected Successfully");
+    }).catch( err => {
+    console.log("Database Connection Failed.");
+})
+
+
 
 //Use morgan
 app.use(morgan('dev'))
